@@ -8,7 +8,7 @@ import fs from 'fs';
 //   }
 // });
 
-
+// Callback hell / Pyramid of Doom
 // fs.readFile('./jan_en_jurre.txt', 'utf-8', (err, data) => {
 //   if (err) {
 //     console.error(`something went wrong: ${err}!`);
@@ -46,7 +46,7 @@ import fs from 'fs';
 //   .then(data => console.log(data))
 //   .catch(err => console.error(err));
 
-
+// Maak er dus een functie van die je wél kunt hergebruiken
 const SuperReader = (fileName = './jan_en_jurre.txt') => 
   new Promise((resolve, reject) => {
     fs.readFile(fileName, 'utf-8', (err, data) => {

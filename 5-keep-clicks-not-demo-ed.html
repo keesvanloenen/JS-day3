@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Click Teller</title>
+  </head>
+  <body>
+    <button id="click-btn">Klik hier</button>
+    <p>Aantal kliks: <span id="nrOfClicks"></span></p>
+    <script>
+      const clicksCount = new Map();
+
+      const button = document.querySelector('#click-btn');
+      const span = document.querySelector('#nrOfClicks');
+
+      button.addEventListener('click', () => {
+        let currentCount = clicksCount.get(button) || 0;
+        clicksCount.set(button, currentCount + 1);        // will never add same button twice :)
+        span.innerText = `${currentCount + 1}`;
+      });
+    </script>
+  </body>
+</html>

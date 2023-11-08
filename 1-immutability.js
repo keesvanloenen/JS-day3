@@ -33,8 +33,9 @@ console.log(kleuren.filter((elem) => elem.includes('l')));
 
 // Opdracht: schrijf je eigen jurreFilter() die begint met Array.prototype =
 
-Array.prototype.keesFilter = function (predicate) {
-  // of callbackfn
+
+//                           vvvvvvvv let op géén arrow, want die heeft geen eigen 'this'
+Array.prototype.keesFilter = function(predicate) {
   const result = [];
 
   for (const elem of this) {
