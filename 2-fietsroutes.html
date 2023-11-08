@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fietsroutes</title>
+
+    <style>
+      li {
+        width: 500px;
+        background-color: lightblue;
+        padding: 0.5em; /* helft van standaard lettergrootte */
+        margin-bottom: 0.5em;
+      }
+
+      .gehaald {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hoi JP, de cursisten hebben dit uitgebreid -->
+    <h1>Fiets routes</h1>
+
+    <ul id="overzicht"></ul>
+
+    <template id="regeltje">
+      <li>
+        <input type="text" id="naam" />
+        <input type="number" id="afstand" />
+        <input type="checkbox" id="gehaald" onclick="color(event)" />
+      </li>
+    </template>
+
+    <button onclick="add()">Voeg toe</button>
+    <button id="tweedebutton">Voeg toe versie 2</button>
+
+    <script>
+      document.querySelector('#tweedebutton').addEventListener('click', add);
+
+      function add() {
+        const template = document.querySelector('#regeltje');
+        const clone = template.content.cloneNode(true);
+        document.querySelector('#overzicht').appendChild(clone);
+      }
+
+      function color(event) {
+        console.log(event);
+
+        // target = wie veroorzaakte het event?
+        // srcElement = IE variant van target
+        // currentTarget = wie ving dit event op?
+
+        const checkbox = event.target;
+        const li = checkbox.parentElement;
+
+        if (checkbox.checked) {
+          li.classList.add('gehaald');
+        } else {
+          li.classList.remove('gehaald');
+        }
+      }
+      document
+        .querySelector('body')
+        .addEventListener('click', () => console.log('ook de body weet dit!'));
+    </script>
+  </body>
+</html>
